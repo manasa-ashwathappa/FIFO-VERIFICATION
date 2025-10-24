@@ -1,0 +1,46 @@
+# --------------------------------------------------------------
+# .gitignore for FIFO Verification Project
+# Author: Manasa (2025)
+# --------------------------------------------------------------
+# Purpose:
+#   Prevents build outputs, temporary files, and IDE settings
+#   from being tracked in Git.
+# --------------------------------------------------------------
+
+# ----------------------------
+# Simulation / Build outputs
+# ----------------------------
+*.vvp                # Icarus Verilog compiled output
+*.vcd                # Waveform dump files
+*.log                # Log files
+*.out                # Generic simulation output
+
+# ----------------------------
+# Verilator / Object files
+# ----------------------------
+obj_dir/             # Verilator build directory
+*.o                  # Object files
+*.d                  # Dependency files
+
+# ----------------------------
+# Generated directories
+# ----------------------------
+waves/               # Waveform storage directory
+results/             # Optional results directory
+build/               # Temporary build folder (if used)
+
+# ----------------------------
+# Editor / IDE files
+# ----------------------------
+.vscode/             # VS Code workspace settings
+.idea/               # JetBrains IDEs
+*.swp                # Vim swap files
+.DS_Store            # macOS Finder metadata
+Thumbs.db            # Windows Explorer thumbnail cache
+
+# ----------------------------
+# Miscellaneous
+# ----------------------------
+*.bak                # Backup files
+*.tmp                # Temp files
+*~                   # Autosave temp
