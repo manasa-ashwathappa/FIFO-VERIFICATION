@@ -291,8 +291,8 @@ module tb_fifo;
 
   // Dump waveforms for GTKWave
   initial begin
-    $dumpfile("waves/dump.vcd");
-    $dumpvars(0, tb_fifo);
+    $dumpfile("dump.vcd");
+    $dumpvars();
   end
 
   // Safety timeout to end simulation
