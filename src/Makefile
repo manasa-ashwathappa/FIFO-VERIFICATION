@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# (c) 2025 Manasa
+# (c) 2025 Manasa Ashwathappa
 #
 # ---------------------------------------------------------------
 # Makefile for FIFO Verification Project
