@@ -23,7 +23,7 @@ The verification environment includes:
 
 ---
 
-## ⚙️ Repository Structure
+## Repository Structure
 ```bash
 fifo-verification/
 ├── src/                        # Source files for design and testbench
