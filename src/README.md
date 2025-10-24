@@ -5,7 +5,7 @@ The project demonstrates a structured approach to functional verification — in
 
 ---
 
-## 🧠 Overview
+## Overview
 
 This repository implements and verifies a **16-depth × 8-bit FIFO** using a custom environment inspired by UVM principles (without requiring the full UVM library).
 
