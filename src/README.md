@@ -24,3 +24,18 @@ The verification environment includes:
 ---
 
 ## ⚙️ Repository Structure
+```bash
+fifo-verification/
+├── src/                        # Source files for design and testbench
+│   ├── fifo.sv                 # FIFO RTL (Design Under Test)
+│   ├── fifo_if.sv              # Interface connecting DUT and testbench
+│   ├── classes.sv              # Verification classes (GEN, DRV, MON, SCO, ENV)
+│   └── tb_fifo.sv              # Top-level testbench module
+│
+├── waves/                      # Auto-generated waveform dump directory (created after simulation)
+│   └── dump.vcd                # Simulation waveform file (generated)
+│
+├── Makefile                    # Build, run, lint, and clean commands
+├── .gitignore                  # Ignore build artifacts and temp files
+├── LICENSE                     # MIT License for open-source use
+└── README.md                   # Project documentation (this file)
