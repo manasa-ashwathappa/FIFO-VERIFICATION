@@ -1,25 +1,7 @@
 // SPDX-License-Identifier: MIT
 // (c) 2025 Manasa Ashwathappa
-//
-// -------------------------------------------------------------
-// Title       : FIFO Verification Environment + Testbench
-// Description : Unified SystemVerilog testbench for 8-bit FIFO
-// -------------------------------------------------------------
-// This file includes all testbench components:
-//   1. Transaction
-//   2. Generator
-//   3. Driver
-//   4. Monitor
-//   5. Scoreboard
-//   6. Environment
-//   7. Top-level testbench (tb_fifo)
-// -------------------------------------------------------------
-
 // ============================================================
 // TRANSACTION CLASS
-// ============================================================
-// Defines a single read/write operation along with all related
-// fields for data and control. Randomized to create varied tests.
 // ============================================================
 class transaction;
   rand bit oper;            // 1 = write, 0 = read operation
@@ -37,10 +19,6 @@ endclass
 
 // ============================================================
 // GENERATOR CLASS
-// ============================================================
-// Randomizes transactions and sends them to the driver via a
-// mailbox. The generator waits for a signal from the scoreboard
-// before producing the next transaction.
 // ============================================================
 class generator;
   transaction tr;
@@ -71,9 +49,6 @@ endclass
 
 // ============================================================
 // DRIVER CLASS
-// ============================================================
-// Drives the DUT (FIFO) through the virtual interface based on
-// randomized transactions received from the generator.
 // ============================================================
 class driver;
   virtual fifo_if fif;
@@ -133,9 +108,6 @@ endclass
 // ============================================================
 // MONITOR CLASS
 // ============================================================
-// Observes DUT interface signals and records transactions seen
-// for later comparison in the scoreboard.
-// ============================================================
 class monitor;
   virtual fifo_if fif;
   mailbox #(transaction) mbx;
@@ -171,9 +143,6 @@ endclass
 
 // ============================================================
 // SCOREBOARD CLASS
-// ============================================================
-// Acts as the reference model. Maintains a queue to model FIFO
-// behavior and compares actual vs expected outputs.
 // ============================================================
 class scoreboard;
   mailbox #(transaction) mbx;
@@ -221,9 +190,6 @@ endclass
 // ============================================================
 // ENVIRONMENT CLASS
 // ============================================================
-// Coordinates all components: generator, driver, monitor, and
-// scoreboard. Handles test phases (pre, test, post).
-// ============================================================
 class environment;
   generator  gen;
   driver     drv;
@@ -249,7 +215,7 @@ class environment;
     mon = new(m2s);
     sco = new(m2s);
 
-    // ✅ Connect interface and sync events
+    // Connect interface and sync events
     drv.fif = fif;
     mon.fif = fif;
     gen.next = next;
@@ -269,7 +235,7 @@ class environment;
       drv.run();
       mon.run();
       sco.run();
-    join // ✅ Wait for all processes to finish
+    join // Wait for all processes to finish
   endtask
 
   // Post-test summary
@@ -289,9 +255,6 @@ endclass
 
 // ============================================================
 // TOP-LEVEL TESTBENCH MODULE
-// ============================================================
-// Instantiates DUT, interface, environment, and sets up clock,
-// waveform dumping, and simulation controls.
 // ============================================================
 module tb_fifo;
 
